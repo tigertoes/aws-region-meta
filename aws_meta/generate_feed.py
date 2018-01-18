@@ -18,6 +18,7 @@ from time import strftime
 
 from argparse import ArgumentParser
 from csv_handler import CSVHandler
+from genson import SchemaBuilder
 
 
 def main():
@@ -36,12 +37,17 @@ def main():
 
     version_directory = os.path.join(args.base_dir, args.api_version)
     latest_directory = os.path.join(args.base_dir, 'latest')
+    schema = SchemaBuilder()
+    schema.add_object(csv.data)
+    schema.to_schema()
 
     for directory in (version_directory, latest_directory):
         if not os.path.exists(directory):
             os.makedirs(directory)
         with open(os.path.join(directory, 'regions.json'), 'w') as f:
             f.write(csv.to_json())
+        with open(os.path.join(directory, 'regions.schema.json'), 'w') as f:
+            f.write(schema.to_json())
 
     generate_version_list(args.base_dir)
 
