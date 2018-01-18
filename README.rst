@@ -11,13 +11,13 @@ itself.
 
 Building and using it locally
 -----------------------------
-:: 
+Installation:: 
 
     pip install git+ssh://git@github.com/tigertoes/aws-region-meta
 
 Update the data::
 
-    aws_feed --csv_file=data/regions.csv --basedir=$PWD/api
+    make version
 
 Serve it locally::
 
@@ -36,7 +36,7 @@ List all available API versions. Different versions of the feed may have
 differing data structure as well as data content.
 
 /$version/regions.json
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 Contains regional meta-data. All keys in the parent are region names. 
 
 /$version/regions.schema.json
