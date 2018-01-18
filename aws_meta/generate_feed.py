@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import os
+import json
 from time import strftime
 
 from argparse import ArgumentParser
@@ -24,7 +25,7 @@ def main():
     parser.add_argument('--csv_file', '-c', dest='csv_file', required=True, metavar='FILE',
                         help='CSV containing region metadata',
                         type=lambda x: valid_file(parser, x))
-    parser.add_argument('--api_version', '-a', dest='api_version', required=True,
+    parser.add_argument('--api_version', '-a', dest='api_version', required=False,
                         default=strftime('%Y-%m-%d'),
                         help='Version of API')
     parser.add_argument('--basedir', '-b', dest='base_dir', required=True,
@@ -33,15 +34,16 @@ def main():
     csv = CSVHandler(args.csv_file)
     csv.restructure()
 
-    version_directory = os.path.join([args.base_dir, args.api_version])
-    latest_directory = os.path.join([args.base_dir, 'latest'])
+    version_directory = os.path.join(args.base_dir, args.api_version)
+    latest_directory = os.path.join(args.base_dir, 'latest')
 
     for directory in (version_directory, latest_directory):
         if not os.path.exists(directory):
             os.makedirs(directory)
-            with open(os.path.join([directory, 'regions.json']), 'w') as f:
-                f.write(csv.to_json())
+        with open(os.path.join(directory, 'regions.json'), 'w') as f:
+            f.write(csv.to_json())
 
+    generate_version_list(args.base_dir)
 
 def valid_file(parser, filepath):
     """Open the file if it's valid, else throw a parser error"""
@@ -49,6 +51,16 @@ def valid_file(parser, filepath):
         return open(filepath, 'r')
     else:
         parser.error("%s doesn't appear to be a valid file!" % file)
+
+
+def generate_version_list(base_dir):
+    """ Based on the folders present, generate a list of API versions 
+    :param base_dir: Directory to write versions.json out to
+    """
+    subdirs = [subdir[0] for subdir in os.walk(base_dir)][1:]
+    names = list(map(lambda x: x.replace(base_dir, ''), subdirs)) 
+    with open(os.path.join(base_dir, 'versions.json'), 'w') as f:
+        f.write(json.dumps(names))
 
 
 if __name__ == '__main__':
