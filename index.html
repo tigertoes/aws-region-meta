@@ -405,6 +405,15 @@ differing data structure as well as data content.</p>
 <p>JSON Schema (automatically generated) for the regional data.</p>
 </div>
 </div>
+<div class="section" id="example-usage">
+<h1>Example Usage</h1>
+<dl class="docutils">
+<dt>Get the ELB hosted zone for a given region::</dt>
+<dd>curl -s <a class="reference external" href="https://tigertoes.github.io/aws-region-meta/api/latest/regions.json">https://tigertoes.github.io/aws-region-meta/api/latest/regions.json</a> | jq '.[&quot;ap-southeast-1&quot;][&quot;elb&quot;][&quot;elb_hosted_zone_id&quot;]'</dd>
+<dt>Get total count of availability zones for <cite>eu-west-1</cite>::</dt>
+<dd>curl -s <a class="reference external" href="https://tigertoes.github.io/aws-region-meta/api/latest/regions.json">https://tigertoes.github.io/aws-region-meta/api/latest/regions.json</a> | jq '.[&quot;eu-west-1&quot;][&quot;availability_zones&quot;] | length'</dd>
+</dl>
+</div>
 <div class="section" id="licence">
 <h1>Licence</h1>
 <p>Apache 2. Please see the LICENSE file included with the source code.</p>

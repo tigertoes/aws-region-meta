@@ -43,6 +43,14 @@ Contains regional meta-data. All keys in the parent are region names.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 JSON Schema (automatically generated) for the regional data.
 
+Example Usage
+-------------
+Get the ELB hosted zone for a given region::
+    curl -s https://tigertoes.github.io/aws-region-meta/api/latest/regions.json | jq '.["ap-southeast-1"]["elb"]["elb_hosted_zone_id"]'
+
+Get total count of availability zones for `eu-west-1`::
+    curl -s https://tigertoes.github.io/aws-region-meta/api/latest/regions.json | jq '.["eu-west-1"]["availability_zones"] | length'
+
 Licence
 -------
 Apache 2. Please see the LICENSE file included with the source code.
