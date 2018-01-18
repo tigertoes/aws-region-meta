@@ -1,4 +1,5 @@
-
+AWS Meta
+========
 This repo aims to provide feeds of commonly needed data to define, and interact
 with various AWS services. Too much of AWS's infrastructure details are only
 defined as various tables in documentation and this project exists to collate
@@ -11,7 +12,36 @@ itself.
 Building and using it locally
 -----------------------------
 :: 
+
     pip install git+ssh://git@github.com/tigertoes/aws-region-meta
+
+Update the data::
+
+    aws_feed --csv_file=data/regions.csv --basedir=$PWD/api
+
+Serve it locally::
+
+    cd api && python -m SimpleHTTPServer
+
+API
+---
+This is a read-only API so when served via HTTP, everything will be GET calls,
+however your HTTP server of choice should also implement HEAD. Cache lifetimes
+for all except `/versions.json` and `latest/` may be indefinite with
+immutability.
+
+/versions.json
+~~~~~~~~~~~~~~
+List all available API versions. Different versions of the feed may have
+differing data structure as well as data content.
+
+/$version/regions.json
+~~~~~~~~~~~~~~~~~~~~
+Contains regional meta-data. All keys in the parent are region names. 
+
+/$version/regions.schema.json
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+JSON Schema (automatically generated) for the regional data.
 
 Licence
 -------
