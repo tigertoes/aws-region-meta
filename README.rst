@@ -1,5 +1,5 @@
 AWS Region Metadata
-========
+===================
 This repo aims to provide feeds of commonly needed data to define, and interact
 with various AWS services. Too much of AWS's infrastructure details are only
 defined as various tables in documentation and this project exists to collate

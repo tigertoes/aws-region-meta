@@ -4,12 +4,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
-<title>AWS Meta</title>
+<title>AWS Region Metadata</title>
 <link rel="stylesheet" href="docutils_basic.css" type="text/css" />
 </head>
 <body>
-<div class="document" id="aws-meta">
-<h1 class="title">AWS Meta</h1>
+<div class="document" id="aws-region-metadata">
+<h1 class="title">AWS Region Metadata</h1>
 
 <p>This repo aims to provide feeds of commonly needed data to define, and interact
 with various AWS services. Too much of AWS's infrastructure details are only
@@ -18,21 +18,6 @@ these sources, amongst others sources to expose values that inevitably end up
 being used in code that defines various pieces of infrastructure.</p>
 <p>You can either clone or run this locally, or access the feeds from Github
 itself.</p>
-<div class="section" id="building-and-using-it-locally">
-<h1>Building and using it locally</h1>
-<p>Installation:</p>
-<pre class="literal-block">
-pip install git+ssh://git&#64;github.com/tigertoes/aws-region-meta
-</pre>
-<p>Update the data:</p>
-<pre class="literal-block">
-make version
-</pre>
-<p>Serve it locally:</p>
-<pre class="literal-block">
-cd api &amp;&amp; python -m SimpleHTTPServer
-</pre>
-</div>
 <div class="section" id="api">
 <h1>API</h1>
 <p>This is a read-only API so when served via HTTP, everything will be GET calls,
@@ -62,6 +47,21 @@ curl -sL https://bit.ly/2mTZkP9 | jq '.[&quot;ap-southeast-1&quot;][&quot;elb&qu
 <p>Get total count of availability zones for <cite>eu-west-1</cite>:</p>
 <pre class="literal-block">
 curl -sL https://bit.ly/2mTZkP9 | jq '.[&quot;eu-west-1&quot;][&quot;availability_zones&quot;] | length'
+</pre>
+</div>
+<div class="section" id="building-and-using-it-locally">
+<h1>Building and using it locally</h1>
+<p>Installation:</p>
+<pre class="literal-block">
+pip install git+ssh://git&#64;github.com/tigertoes/aws-region-meta
+</pre>
+<p>Update the data:</p>
+<pre class="literal-block">
+make version
+</pre>
+<p>Serve it locally:</p>
+<pre class="literal-block">
+cd api &amp;&amp; python -m SimpleHTTPServer
 </pre>
 </div>
 <div class="section" id="licence">
