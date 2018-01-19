@@ -1,4 +1,4 @@
-AWS Meta
+AWS Region Metadata
 ========
 This repo aims to provide feeds of commonly needed data to define, and interact
 with various AWS services. Too much of AWS's infrastructure details are only
@@ -8,20 +8,6 @@ being used in code that defines various pieces of infrastructure.
 
 You can either clone or run this locally, or access the feeds from Github
 itself.
-
-Building and using it locally
------------------------------
-Installation:: 
-
-    pip install git+ssh://git@github.com/tigertoes/aws-region-meta
-
-Update the data::
-
-    make version
-
-Serve it locally::
-
-    cd api && python -m SimpleHTTPServer
 
 API
 ---
@@ -43,15 +29,32 @@ Contains regional meta-data. All keys in the parent are region names.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 JSON Schema (automatically generated) for the regional data.
 
+
 Example Usage
 -------------
 Get the ELB hosted zone for a given region::
 
-    curl -s https://tigertoes.github.io/aws-region-meta/api/latest/regions.json | jq '.["ap-southeast-1"]["elb"]["elb_hosted_zone_id"]'
+    curl -sL https://bit.ly/2mTZkP9 | jq '.["ap-southeast-1"]["elb"]["elb_hosted_zone_id"]'
 
 Get total count of availability zones for `eu-west-1`::
 
-    curl -s https://tigertoes.github.io/aws-region-meta/api/latest/regions.json | jq '.["eu-west-1"]["availability_zones"] | length'
+    curl -sL https://bit.ly/2mTZkP9 | jq '.["eu-west-1"]["availability_zones"] | length'
+
+
+Building and using it locally
+-----------------------------
+Installation::
+
+    pip install git+ssh://git@github.com/tigertoes/aws-region-meta
+
+Update the data::
+
+    make version
+
+Serve it locally::
+
+    cd api && python -m SimpleHTTPServer
+
 
 Licence
 -------

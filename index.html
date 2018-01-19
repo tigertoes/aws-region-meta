@@ -57,11 +57,11 @@ differing data structure as well as data content.</p>
 <h1>Example Usage</h1>
 <p>Get the ELB hosted zone for a given region:</p>
 <pre class="literal-block">
-curl -s https://tigertoes.github.io/aws-region-meta/api/latest/regions.json | jq '.[&quot;ap-southeast-1&quot;][&quot;elb&quot;][&quot;elb_hosted_zone_id&quot;]'
+curl -sL https://bit.ly/2mTZkP9 | jq '.[&quot;ap-southeast-1&quot;][&quot;elb&quot;][&quot;elb_hosted_zone_id&quot;]'
 </pre>
 <p>Get total count of availability zones for <cite>eu-west-1</cite>:</p>
 <pre class="literal-block">
-curl -s https://tigertoes.github.io/aws-region-meta/api/latest/regions.json | jq '.[&quot;eu-west-1&quot;][&quot;availability_zones&quot;] | length'
+curl -sL https://bit.ly/2mTZkP9 | jq '.[&quot;eu-west-1&quot;][&quot;availability_zones&quot;] | length'
 </pre>
 </div>
 <div class="section" id="licence">
