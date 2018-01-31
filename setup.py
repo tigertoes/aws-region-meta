@@ -24,6 +24,7 @@ setup(
     license='Apache 2',
     install_requires=['unicodecsv'],
     setup_requires=['flake8', 'sphinx', 'genson'],
+    include_package_data=True,
     packages=find_packages(),
     entry_points={
         'console_scripts': ['aws_feed = aws_meta.generate_feed:main']

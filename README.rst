@@ -29,7 +29,6 @@ Contains regional meta-data. All keys in the parent are region names.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 JSON Schema (automatically generated) for the regional data.
 
-
 Example Usage
 -------------
 Get the ELB hosted zone for a given region::
@@ -39,6 +38,18 @@ Get the ELB hosted zone for a given region::
 Get total count of availability zones for `eu-west-1`::
 
     curl -sL https://bit.ly/2mTZkP9 | jq '.["eu-west-1"]["availability_zones"] | length'
+
+Python Interface
+----------------
+When installed as a python package, the latest version of the API is also
+brought in. This is useful in scenarios where you don't want to go on the wire,
+or want to integrate with existing Python code.
+
+Example Usage::
+
+    from aws_meta.meta_reader import MetaReader
+    m = MetaReader()
+    region_metadata = m.get_region('us-east-1')
 
 
 Building and using it locally

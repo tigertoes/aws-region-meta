@@ -49,6 +49,18 @@ curl -sL https://bit.ly/2mTZkP9 | jq '.[&quot;ap-southeast-1&quot;][&quot;elb&qu
 curl -sL https://bit.ly/2mTZkP9 | jq '.[&quot;eu-west-1&quot;][&quot;availability_zones&quot;] | length'
 </pre>
 </div>
+<div class="section" id="python-interface">
+<h1>Python Interface</h1>
+<p>When installed as a python package, the latest version of the API is also
+brought in. This is useful in scenarios where you don't want to go on the wire,
+or want to integrate with existing Python code.</p>
+<p>Example Usage:</p>
+<pre class="literal-block">
+from aws_meta.meta_reader import MetaReader
+m = MetaReader()
+region_metadata = m.get_region('us-east-1')
+</pre>
+</div>
 <div class="section" id="building-and-using-it-locally">
 <h1>Building and using it locally</h1>
 <p>Installation:</p>
