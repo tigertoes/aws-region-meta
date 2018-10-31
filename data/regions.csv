@@ -17,3 +17,5 @@ ca-central-1,YUL,Canada (Montreal),false,2,985666609251,ZP97RAFLXTNZK,Z2EPGBW3AP
 us-gov-west-1,,AWS GovCloud (US),true,3,048591011584,,,Z31GFT0UA1I2HV,,,
 cn-north-1,PEK,Beijing (China),true,2,638102146993,,,,,,
 cn-northwest-1,INC,Ningxia (China),true,3,037604701340,,,,,,
+eu-north-1,ARN,Stockholm (Sweden),true,3,,,,,,,
+me-south-1,BAH,Bahrain,true,3,,,,,,,
